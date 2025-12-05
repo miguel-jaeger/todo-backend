@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins = "*")
@@ -34,6 +35,18 @@ public class ModeloController {
 
         return svc.create(title, desc, owner, dateBegin, dateEnd);
     }
+
+    @GetMapping("/listar")
+    public List<modelo> listAll() {
+        return svc.listAll();
+    }
+
+    
+
+
+
+
+
 
 
 
