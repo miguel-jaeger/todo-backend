@@ -6,7 +6,8 @@ WORKDIR /app
 COPY . .
 
 # Construir el proyecto
-RUN mvn -q -e -DskipTests package
+RUN mvn -X -e -DskipTests package
+
 
 # ---------- Run Stage ----------
 FROM eclipse-temurin:21-jre

@@ -47,6 +47,14 @@ public class ModeloController {
     }
 
 
+    @PutMapping("/actualizar/{id}")
+    public modelo update(@PathVariable Long id, @RequestBody modelo datos) {
+        return svc.update(id, datos);
+    }
+
+
+
+
 
 
 
