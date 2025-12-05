@@ -21,16 +21,20 @@ public class ModeloService {
     private EntityManager em;
 
     // Crear
-    public modelo create(String title, String desc, String ow) {
+    public modelo create(String title, String desc, String ow, LocalDateTime dateBegin, LocalDateTime dateEnd) {
         modelo mod = new modelo();
         mod.setTitle(title);
         mod.setDescription(desc);
-        mod.setStatus("PENDIENTE");
-        mod.setDateBegin(LocalDateTime.now());
-        mod.setDateEnd(LocalDateTime.now());
         mod.setOwner(ow);
+        mod.setStatus("PENDIENTE");
+
+        // Asignar fechas si vienen, si no usar fecha actual
+        mod.setDateBegin(dateBegin != null ? dateBegin : LocalDateTime.now());
+        mod.setDateEnd(dateEnd != null ? dateEnd : LocalDateTime.now());
+
         return repo.save(mod);
     }
+
 
     // Listar
     public List<modelo> listAll() {
