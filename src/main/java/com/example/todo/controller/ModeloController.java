@@ -41,7 +41,13 @@ public class ModeloController {
         return svc.listAll();
     }
 
-    
+    @DeleteMapping("/eliminar/{id}")
+    public void delete(@PathVariable Long id) {
+        svc.delete(id);
+    }
+
+
+
 
 
 
