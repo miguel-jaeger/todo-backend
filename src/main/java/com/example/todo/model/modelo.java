@@ -12,12 +12,12 @@ public class modelo {
     private String title;
     private String description;
     private String status;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime DateBegin;
+    private LocalDateTime DateEnd;
     private String owner;
 
     //Getter y Setter
-    
+
     public Long getId() {
         return id;
     }
@@ -50,14 +50,17 @@ public class modelo {
         this.status = status;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public LocalDateTime getDateBegin() {
+        return DateBegin;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setDateBegin(LocalDateTime dateBegin) {
+        DateBegin = dateBegin;
     }
 
+    public void setDateEnd(LocalDateTime dateEnd) {
+        DateEnd = dateEnd;
+    }
     public String getOwner() {
         return owner;
     }
@@ -66,11 +69,5 @@ public class modelo {
         this.owner = owner;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }
+
