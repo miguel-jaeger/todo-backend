@@ -48,10 +48,22 @@ public class ModeloService {
         repo.deleteById(id);
     }
 
+    // Actualizar
+    public modelo update(Long id, modelo datos) {
+        modelo mod = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("No existe el ID " + id));
 
+        mod.setTitle(datos.getTitle());
+        mod.setDescription(datos.getDescription());
+        mod.setStatus(datos.getStatus());
+        mod.setOwner(datos.getOwner());
 
+        if ("COMPLETADO".equalsIgnoreCase(datos.getStatus())) {
+            mod.setDateEnd(LocalDateTime.now());
+        }
 
+        return repo.save(mod);
+    }
 
-
-
+    
 }
