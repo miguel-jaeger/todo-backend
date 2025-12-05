@@ -16,6 +16,6 @@ RUN mkdir -p /app/data
 COPY --from=build /app/target/*.jar app.jar
 
 # Copiar archivo de base de datos SQLite al contenedor
-COPY /app/modelo.db /app/data/modelo.db
+COPY /app/data/modelo.db /app/data/modelo.db
 
 CMD ["sh","-c","mkdir -p /app/data && java -Dserver.port=${PORT:-4002} -jar /app/app.jar"]
