@@ -31,6 +31,11 @@ public class ModeloService {
         mod.setOwner(ow);
         return repo.save(mod);
     }
+    
+    // Listar
+    public List<modelo> listAll() {
+        return repo.findAll();
+    }
 
 
 
