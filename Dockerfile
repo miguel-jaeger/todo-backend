@@ -1,21 +1,23 @@
+# ---------- Build Stage ----------
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
-RUN mkdir -p /app/data
 
-# Copiar todo el código fuente del proyecto
-COPY app ./ 
+# Copiar todo el proyecto (NO uses "app")
+COPY . .
 
-# Construir proyecto
-RUN mvn -B -DskipTests=true clean package
+# Construir el proyecto
+RUN mvn -q -e -DskipTests package
 
+# ---------- Run Stage ----------
 FROM eclipse-temurin:21-jre
+
 WORKDIR /app
+
+# Crear carpeta para SQLite
 RUN mkdir -p /app/data
 
-# Copiar el archivo jar compilado
+# Copia el JAR del build
 COPY --from=build /app/target/*.jar app.jar
 
-# Copiar archivo de base de datos SQLite al contenedor
-COPY /data/modelo.db /app/data/modelo.db
-
-CMD ["sh","-c","mkdir -p /app/data && java -Dserver.port=${PORT:-4002} -jar /app/app.jar"]
+# Comando de arranque
+CMD ["sh","-c","java -Dserver.port=${PORT:-4002} -jar /app/app.jar"]
