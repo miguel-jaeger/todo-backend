@@ -31,10 +31,16 @@ public class ModeloService {
         mod.setOwner(ow);
         return repo.save(mod);
     }
-    
+
     // Listar
     public List<modelo> listAll() {
         return repo.findAll();
+    }
+
+    // Buscar por id
+    public modelo findById(Long id) {
+        return repo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Incident not found with id " + id));
     }
 
 
