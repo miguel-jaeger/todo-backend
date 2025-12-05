@@ -43,6 +43,11 @@ public class ModeloService {
                 .orElseThrow(() -> new EntityNotFoundException("Incident not found with id " + id));
     }
 
+    // Eliminar
+    public void delete(Long id){
+        repo.deleteById(id);
+    }
+
 
 
 
